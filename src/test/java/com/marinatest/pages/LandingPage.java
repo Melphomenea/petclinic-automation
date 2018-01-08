@@ -25,7 +25,7 @@ public class LandingPage extends BasePage<LandingPage> {
     @FindBy (xpath = "//a[@title='find owners']")
     private WebElement findOwnersLink;
 
-    @FindBy (xpath = "//button[contains(text(), 'Find Owner')]")
+    @FindBy (xpath = "//a[contains(@href, '/owners/find')]")
     private WebElement findOwnersButton;
 
     @FindBy (xpath = "//td/a")
@@ -45,6 +45,7 @@ public class LandingPage extends BasePage<LandingPage> {
     }
 
     public void checkUniqueNames() {
+
     }
 
     public void isElementActive() {

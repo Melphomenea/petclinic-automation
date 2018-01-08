@@ -19,14 +19,10 @@ public class LandingPage extends BasePage<LandingPage> {
     @Override
     protected LandingPage getThis() {return this;}
 
-
-    /*=================================================================*/
-
-    @FindBy (xpath = "//a[@title='find owners']")
-    private WebElement findOwnersLink;
+    /*===*/
 
     @FindBy (xpath = "//a[contains(@href, '/owners/find')]")
-    private WebElement findOwnersButton;
+    private WebElement findOwnersLink;
 
     @FindBy (xpath = "//td/a")
     private WebElement tableRow;
@@ -34,14 +30,10 @@ public class LandingPage extends BasePage<LandingPage> {
     @FindBy (xpath = "//li[@class='active']")
     private WebElement activeNav;
 
-    /*=================================================================*/
+    /*===*/
 
     public void clickFindOwnersLink() {
         findOwnersLink.click();
-    }
-
-    public void clickFindOwnersButton() {
-        findOwnersButton.click();
     }
 
     public void checkUniqueNames() {

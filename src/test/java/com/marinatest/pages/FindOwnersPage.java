@@ -5,6 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class FindOwnersPage extends BasePage <FindOwnersPage> {
 
     public FindOwnersPage (WebDriver driver) {super(driver);}
@@ -21,9 +25,36 @@ public class FindOwnersPage extends BasePage <FindOwnersPage> {
     @FindBy(xpath = "//button[contains(@class, 'btn')]")
     private WebElement findOwnersButton;
 
+    @FindBy (tagName = "tbody")
+    private WebElement tableOwners;
+
     /*===*/
 
     public void clickFindOwnersButton() {
         findOwnersButton.click();
+    }
+
+    public void checkUniqueNames() {
+        //Locate rows of the dynamic Owners table
+        List<WebElement> table_rows = tableOwners.findElements(By.tagName("tr"));
+        //calculate number of rows in the table
+        int row_count = table_rows.size();
+
+        //Go through the table
+        for (int row=0; row < row_count; row++)
+        {
+            //Locate columns of the row:
+            List <WebElement> cols_row = table_rows.get(row).findElements(By.tagName("td"));
+            //calculate number of cells in a row
+            int col_count =cols_row.size();
+            //write the content of every cell
+            //for (int col=0; col<col_count; col++) {
+                //String celltext = cols_row.get(col).getText(); - writes all cells
+                //String celltext = cols_row.get(0).getText();
+                //System.out.println(row +" row and " + col + " cell: " + celltext);
+            //}
+            String celltext = cols_row.get(0).getText();
+            System.out.println(row +" row and first cell: " + celltext);
+        }
     }
 }

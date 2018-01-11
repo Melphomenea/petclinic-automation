@@ -21,4 +21,9 @@ public class FindOwnersPageSteps {
     public void iClickFindOwnersButton() {
         findOwnersPage.clickFindOwnersButton();
     }
+
+    @And("^I check the last name for unique ones$")
+    public void checkNamesForUniqueOnes() {
+        findOwnersPage.checkUniqueNames();
+    }
 }

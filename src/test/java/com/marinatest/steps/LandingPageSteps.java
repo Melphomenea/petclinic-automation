@@ -36,14 +36,7 @@ public class LandingPageSteps {
         landingPage.clickFindOwnersLink();
     }
 
-@And("^I check the last name for unique ones$")
-    public void checkNamesForUniqueOnes() {
-        landingPage.checkUniqueNames();
-}
-
-@And("^I enter my name in the search field$")
+    @And("^I enter my name in the search field$")
     public void iEnterMyNameInTheSearchBox() {
-
-}
-
+    }
 }

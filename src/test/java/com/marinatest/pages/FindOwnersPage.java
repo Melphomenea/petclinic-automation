@@ -5,9 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class FindOwnersPage extends BasePage <FindOwnersPage> {
 
@@ -41,12 +43,13 @@ public class FindOwnersPage extends BasePage <FindOwnersPage> {
         int row_count = table_rows.size();
 
         //Go through the table
+        List <String> lastnames = new ArrayList<>();
         for (int row=0; row < row_count; row++)
         {
             //Locate columns of the row:
             List <WebElement> cols_row = table_rows.get(row).findElements(By.tagName("td"));
             //calculate number of cells in a row
-            int col_count =cols_row.size();
+            //int col_count =cols_row.size();
             //write the content of every cell
             //for (int col=0; col<col_count; col++) {
                 //String celltext = cols_row.get(col).getText(); - writes all cells
@@ -55,6 +58,10 @@ public class FindOwnersPage extends BasePage <FindOwnersPage> {
             //}
             String celltext = cols_row.get(0).getText();
             System.out.println(row +" row and first cell: " + celltext);
+            String ss[]=celltext.split(" ");
+            lastnames.add(ss[1]);
+            //lastnames.stream().distinct().forEach(System.out::println);
         }
+        lastnames.stream().distinct().forEach(System.out::println);
     }
 }

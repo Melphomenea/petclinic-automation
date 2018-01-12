@@ -3,6 +3,7 @@ package com.marinatest.steps;
 import com.google.inject.Inject;
 import com.marinatest.pages.FindOwnersPage;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -22,8 +23,13 @@ public class FindOwnersPageSteps {
         findOwnersPage.clickFindOwnersButton();
     }
 
-    @And("^I check the last name for unique ones$")
+    @And("^I check the last names of the owners$")
     public void checkNamesForUniqueOnes() {
-        findOwnersPage.checkUniqueNames();
+        findOwnersPage.checkNames();
+    }
+
+    @Then("^I should be able to filter unique owners in the command line$")
+    public void writeNamesConsole (){
+        findOwnersPage.writeNamesConsole();
     }
 }

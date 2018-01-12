@@ -1,5 +1,6 @@
 package com.marinatest.pages;
 
+import cucumber.api.java.After;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage <R extends BasePage<R>> {
@@ -25,4 +26,11 @@ public abstract class BasePage <R extends BasePage<R>> {
     }
 
     public String getPageURL() { return driver.getCurrentUrl(); }
+
+    @After
+    private void testCleanup()
+    {
+        driver.quit();
+        driver.close();
+    }
 }

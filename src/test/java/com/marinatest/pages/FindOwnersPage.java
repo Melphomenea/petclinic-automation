@@ -1,13 +1,12 @@
 package com.marinatest.pages;
 
+import org.junit.After;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class FindOwnersPage extends BasePage <FindOwnersPage> {
 
@@ -34,12 +33,11 @@ public class FindOwnersPage extends BasePage <FindOwnersPage> {
         findOwnersButton.click();
     }
 
-    public void checkUniqueNames() {
+    public void checkNames() {
         //Locate rows of the dynamic Owners table
         List<WebElement> table_rows = tableOwners.findElements(By.tagName("tr"));
         //calculate number of rows in the table
         int row_count = table_rows.size();
-
         //Go through the table
         List <String> lastnames = new ArrayList<>();
         for (int row=0; row < row_count; row++)
@@ -56,10 +54,22 @@ public class FindOwnersPage extends BasePage <FindOwnersPage> {
             //}
             String celltext = cols_row.get(0).getText();
             System.out.println(row +" row and first cell: " + celltext);
+        }
+    }
+
+    public void writeNamesConsole () {
+        List <String> lastnames = new ArrayList<>();
+        List<WebElement> table_rows = tableOwners.findElements(By.tagName("tr"));
+        int row_count = table_rows.size();
+        for (int row=0; row < row_count; row++)
+        {
+            List <WebElement> cols_row = table_rows.get(row).findElements(By.tagName("td"));
+            String celltext = cols_row.get(0).getText();
             String ss[]=celltext.split(" ");
             lastnames.add(ss[1]);
-            //lastnames.stream().distinct().forEach(System.out::println);
         }
+        System.out.println("\n\n The unique ones are:\n");
         lastnames.stream().distinct().forEach(System.out::println);
+
     }
 }

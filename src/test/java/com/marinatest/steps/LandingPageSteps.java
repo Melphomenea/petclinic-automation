@@ -3,7 +3,6 @@ package com.marinatest.steps;
 import com.marinatest.pages.LandingPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -18,12 +17,6 @@ public class LandingPageSteps {
     public LandingPageSteps (WebDriver webDriver) {
         this.webDriver = webDriver;
         landingPage= PageFactory.initElements(this.webDriver, LandingPage.class);
-    }
-
-    @After
-    public void testCleanup()
-    {
-        webDriver.quit();
     }
 
     @Given("^I am on the Landing page$")
